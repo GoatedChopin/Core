@@ -69,6 +69,78 @@ class LinkedList:
             node = node.right
         return False
 
+    def size(self):
+        return self.size
+
+    def empty(self):
+        return self.size == 0
+
+    def valueAt(self, index):
+        if index < 0:
+            return self.__valueFromBack__(index)
+        node = self.head
+        if index < self.size:
+            for i in range(index):
+                node = node.right
+            return node.val
+
+    def __valueFromBack__(self, index):
+        node = self.tail
+        if abs(index) <= self.size:
+            for i in range(abs(index) - 1):
+                node = node.left
+            return node.val
+
+    def insert(self, index, val):
+        if index < 0:
+            index = self.size + index
+        node = self.head
+        if index < self.size:
+            for i in range(index):
+                node = node.right
+            left, right = node.left, node.right
+            newNode = ListNode(val=val, left=left, right=right)
+            left.right, right.left = newNode, newNode
+
+    def erase(self, index):
+        node = self.head
+        if index < self.size:
+            for i in range(index-1):
+                node = node.right
+            node = node.right
+            left = node.left
+            right = node.right
+            if left and right:
+                left.right, right.left = right, left
+                return
+            elif left:
+                left.right = right
+                return
+            else:
+                right.left = left
+                return
+
+    def removeVal(self, val, limit=1):
+        node = self.head
+        i = 0
+        removed = 0
+        while node:
+            if node.val == val:
+                self.erase(i)
+                removed += 1
+                if removed == limit:
+                    return
+            node = node.right
+            i += 1
+
+    def reverse(self):
+        if self.size > 1:
+            l, r = self.head, self.tail
+            for _ in range(self.size//2):
+                l.val, r.val = r.val, l.val
+                l = l.right
+                r = r.left
+
     def __str__(self):
         out = ""
         node = self.head
@@ -97,3 +169,15 @@ if __name__ == "__main__":
     assert not l.popRight()
     assert not l.peekLeft()
     assert not l.peekRight()
+
+    l = LinkedList()
+    test_vals = [1, 2, 3, 4, 5]
+    for val in test_vals:
+        l.pushRight(val)
+    print(l)
+    l.removeVal(2)
+    print(l)
+    l.erase(2)
+    print(l)
+    l.reverse()
+    print(l)
