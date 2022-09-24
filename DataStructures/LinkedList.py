@@ -1,5 +1,6 @@
 class ListNode:
-    def __init__(self, val=None, left=None, right=None):
+    def __init__(self, key=None, val=None, left=None, right=None):
+        self.key = key
         self.val = val
         self.left = left
         self.right = right
