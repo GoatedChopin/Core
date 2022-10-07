@@ -5,7 +5,7 @@ class Queue:
         self.l = LinkedList()
 
     def enqueue(self, val):
-        self.l.pushLeft(val)
+        self.l.pushLeft(val=val)
 
     def dequeue(self):
         if not self.l.empty():
