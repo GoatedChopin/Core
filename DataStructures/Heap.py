@@ -43,7 +43,6 @@ class Heap:
         if index == 0:
             return
         parent = (index - 1) // 2
-        print("Parent is {}".format(parent))
         if self.elements[parent] < self.elements[index]:
             self.swap(parent, index)
             self.siftUp(parent)
@@ -110,7 +109,6 @@ class MaxTreeHeap:
             largest = self
 
         if largest != self:
-            # print("Swapping {} with {}".format(largest.val, self.val))
             self.swap(largest)
             out = largest.siftDown()
         return out
@@ -181,7 +179,9 @@ if __name__ == "__main__":
     import random as r
     heap = Heap()
     for i in range(1000):
-        heap.push(r.randint(0, 1000))
+        val = r.randint(0, 1000)
+        print("Inserting {} into heap".format(val))
+        heap.push(val)
     current = 1001
     for i in range(1000):
         next_val = heap.pop()

@@ -1,6 +1,7 @@
 from DataStructures.Heap import Heap
 from DataStructures.LinkedList import LinkedList
 
+
 def dijkstra_length(start_node, end_node):
     if start_node == end_node:
         return 0
@@ -61,7 +62,7 @@ def binary_search(sorted_iterable, target):
     if target is not in sorted_iterable, returns None
     """
     n = len(sorted_iterable)
-    l, r = 0, n-1
+    l, r = 0, n - 1
     while l <= r:
         m = (l + r) // 2
         current = sorted_iterable[m]
@@ -75,5 +76,5 @@ def binary_search(sorted_iterable, target):
 
 
 if __name__ == "__main__":
-    assert binary_search([1,2,3,4,5], 3) == 2
-    assert binary_search([1,2,3,4,5], 7) == -1
+    assert binary_search([1, 2, 3, 4, 5], 3) == 2
+    assert binary_search([1, 2, 3, 4, 5], 7) == -1
