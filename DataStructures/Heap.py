@@ -79,6 +79,7 @@ class MaxTreeHeap:
     all children must be less than or equal to their parents.
     """
     def __init__(self, val=None, parent=None):
+        raise NotImplementedError("This class is not fit for use, use Heap.Heap() instead.")
         self.val = val
         self.parent = None
         self.left = None
